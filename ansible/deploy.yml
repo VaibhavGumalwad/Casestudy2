@@ -1,0 +1,19 @@
+- hosts: web
+  become: yes
+  tasks:
+    - name: Install Docker
+      amazon.aws.aws_package:
+        name: docker
+        state: present
+
+    - name: Start Docker service
+      service:
+        name: docker
+        state: started
+        enabled: true
+
+    - name: Pull Docker image
+      command: docker pull yourdockerhubusername/myapp:latest
+
+    - name: Run container
+      command: docker run -d -p 80:3000 yourdockerhubusername/myapp:latest
