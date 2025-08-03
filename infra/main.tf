@@ -38,11 +38,11 @@ resource "aws_security_group" "web" {
 }
 
 resource "aws_instance" "web" {
-  ami                    = "ami-0c94855ba95c71c99" # Amazon Linux 2
+  ami                    = "ami-0c94855ba95c71c99"
   instance_type          = var.instance_type
   subnet_id              = aws_subnet.public.id
   security_groups        = [aws_security_group.web.name]
-  key_name               = "mykey" # Replace with your AWS key pair
+  key_name               = "mykey" 
 }
 
 resource "aws_eip" "lb" {
