@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-chmod +x build_and_push.sh
 set -euo pipefail
 IMAGE="vaibhavgumalwad/myapp:${GIT_COMMIT:-latest}"
 echo "[INFO] Building Docker image: $IMAGE"
