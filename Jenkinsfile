@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'develop', url: 'git@github.com:VaibhavGumalwad/Casestudy2.git'
+                git branch: 'develop', url: 'https://github.com/VaibhavGumalwad/Casestudy2.git'
             }
         }
         stage('Build & Push Docker Image') {
