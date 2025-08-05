@@ -21,6 +21,7 @@ pipeline {
                     }
             }
         }
+        }
         stage('Terraform Apply') {
             steps {
                 dir('infra') {
