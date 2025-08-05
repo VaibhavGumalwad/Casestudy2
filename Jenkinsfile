@@ -11,9 +11,14 @@ pipeline {
         }
         stage('Build & Push Docker Image') {
             steps {
-                sh 'chmod +x scripts/build_and_push.sh'
-
-                sh './scripts/build_and_push.sh'
+                script {
+                    withCredentials([usernamePassword(credentialsId: 'dockerhub', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
+                        sh '''
+                            echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
+                            chmod +x scripts/build_and_push.sh
+                            ./scripts/build_and_push.sh
+                        '''
+                    }
             }
         }
         stage('Terraform Apply') {
