@@ -6,7 +6,7 @@ COPY package*.json ./
 
 RUN npm ci --only=production
 
-COPY src ./src
+COPY src ./rc
 
 RUN addgroup app && adduser -S -G app app
 USER app
